@@ -1,0 +1,2 @@
+npm init -y  -> answer all question with yes
+npm install redux  -> install redux
