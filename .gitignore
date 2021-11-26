@@ -1,2 +1,4 @@
 node_modules
 package-lock.json
+01-starting-project/node_modules
+./01-starting-project/node_modules
