@@ -1,3 +1,4 @@
 npm init -y  -> answer all question with yes
 npm install redux  -> install redux
 npm install redux  react-redux  -> install redux in react
+npm install @reduxjs/toolkit  -> install react toolkit
