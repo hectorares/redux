@@ -5,11 +5,9 @@ const counterReducer = (state = { counter: 0 }, action) => {
     }
 }
 const store = redux.createStore(counterReducer);
-console.log(store.getState());
 
 const countersubscriber =()=>{
     const latest = store.getState();
-    console.log(latest);
 }
 
 store.subscribe(countersubscriber);
