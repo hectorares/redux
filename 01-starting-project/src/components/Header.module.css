@@ -55,6 +55,15 @@
   text-align: center;
   color: aquamarine;
 }
+.cartCounter:hover {
+  background: aquamarine;
+  color: #000000;
+}
+
+.cartCounter:hover .cartBadge {
+  background: #000000;
+  color: aquamarine;
+}
 
 .cartBadge{
   width: 40px;

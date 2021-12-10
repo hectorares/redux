@@ -53,6 +53,9 @@
     border: white solid 1px;
     margin-left: 1rem;
   }
+  .item div button:hover {
+    background: black;
+  }
  
 
  

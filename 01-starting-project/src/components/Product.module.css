@@ -11,6 +11,10 @@
     color: skyblue;
     border-color: skyblue;
 }
+.product button:hover {
+    background: skyblue;
+    color: white;
+}
 .product h2{
     display: inline;
 }
@@ -39,3 +43,4 @@
   .right {
       float: right;
   }
+  
