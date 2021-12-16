@@ -15,6 +15,10 @@
     color: white;
 
   }
+
+  .cart p {
+    color: white;
+  }
   
   .item {
     /* font-size: 2rem; */

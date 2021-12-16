@@ -1,26 +1,52 @@
 import classes from './Cart.module.css'
-
+import { useSelector, useDispatch } from 'react-redux';
+import { cartActions } from '../store/cart-slice';
 const Cart = () => {
-    const handleAdd = () => {
+    const totalQuantity = useSelector(state => state.cart.totalQuantity);
+    const items = useSelector(state => state.cart.items)
+    const dispatch = useDispatch();
+    const handleAdd = (item) => {
+        dispatch(cartActions.addNewItem(item));
     }
-    const handleRemove = () => {
+    const handleRemove = (item) => {
+        dispatch(cartActions.removeItem(item));
     }
     return (
         <main className={classes.cart}>
             <h1>Your Shopping Cart</h1>
-            <div className={classes.item}>
-                <div>
-                    <span>Test item</span>
-                    <span>$18.00 <p>(&6.00/item)</p></span>
-                </div>
-                <div>
-                    <span>x3</span>
-                    <span>
-                        <button onClick={handleRemove}>-</button>
-                        <button onClick={handleAdd}>+</button>
-                    </span>
-                </div>
-            </div>
+            {
+                items.length ?
+                    <div className={classes.item}>
+                        {
+                            items.map(item => {
+                                const price = item.price.toLocaleString();
+                                const totalPrice = item.totalPrice.toLocaleString();
+                                return (
+                                    <div key={item.idItem}>
+                                        <div>
+                                            <span> {item.name}</span>
+                                            <span>${totalPrice}<p>(&{price}/item)</p></span>
+                                        </div>
+                                        <div>
+                                            <span>x{item.quantity}</span>
+                                            <span>
+                                                <button onClick={() => handleRemove(item)}>-</button>
+                                                <button onClick={() => handleAdd(item)}>+</button>
+                                            </span>
+                                        </div>
+                                        <br />
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    :
+                    <div>
+                        <p>
+                            There are not products yet.
+                        </p>
+                    </div>
+            }
         </main>
     );
 };
