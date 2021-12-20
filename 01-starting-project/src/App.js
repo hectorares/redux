@@ -18,7 +18,13 @@ function App() {
       {showCart && <Cart />}
       {products.map(product => {
         return (
-          <Product  key={product.idItem} data={product} />
+          <Product
+            key={product.idItem}
+            idItem={product.idItem}
+            name={product.name}
+            price={product.price}
+            description={product.description}
+            />
         )
       })}
     </Fragment>

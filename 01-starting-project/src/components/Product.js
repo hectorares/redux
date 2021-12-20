@@ -1,28 +1,32 @@
 import classes from './Product.module.css';
 import { useDispatch } from 'react-redux';
-import { uiActions } from '../store/ui-slice';
 import { cartActions } from '../store/cart-slice';
 
 const Product = (props) => {
-    const product = props.data;
-    const price = product.price.toLocaleString();
+    const {idItem, name, description, price } = props;
     const dispatch = useDispatch();
     const handleAddToCart = () => {
-        dispatch(cartActions.addNewItem(product))
+        dispatch(cartActions.addNewItem({
+            idItem,
+            name,
+            price,
+            description
+        }
+        ))
     }
     return (
         <main className={classes.product}>
             <div className={classes.row}>
                 <span>
                     <h2>
-                        {product.name}
+                        {name}
                     </h2>
                 </span>
-                <div className={classes.price}>{price}$</div>
+                <div className={classes.price}>{price.toLocaleString()}$</div>
             </div>
             <div className={classes.row}>
                 <span>
-                    {product.description}
+                    {description}
                 </span>
                 <span className={classes.right}>
                     <button onClick={handleAddToCart}>Add to cart</button>
