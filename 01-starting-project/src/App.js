@@ -8,6 +8,7 @@ import { productActions } from './store/product-slice';
 import Notification from './components/UI/Notification';
 import { uiActions } from './store/ui-slice';
 import { sendCartData, getCartData } from './store/cart-actions';
+import { fecthProductsData } from './store/product-slice';
 let isInitial = true;
 
 
@@ -18,6 +19,9 @@ function App() {
   const cartChanged = useSelector(state => state.cart.changed);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+      dispatch(fecthProductsData())
+  }, [dispatch])
 
   useEffect(() => {
     if (isInitial) {
@@ -34,7 +38,10 @@ function App() {
 
   useEffect(() => {
     dispatch(getCartData())
-  }, [dispatch])
+  }, [dispatch]);
+
+
+
 
   return (
     <Fragment>
