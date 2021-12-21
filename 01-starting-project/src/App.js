@@ -7,7 +7,7 @@ import { Provider, useDispatch, useSelector } from 'react-redux';
 import { productActions } from './store/product-slice';
 import Notification from './components/UI/Notification';
 import { uiActions } from './store/ui-slice';
-import { sendCartData } from './store/cart-slice';
+import { sendCartData, getCartData } from './store/cart-actions';
 let isInitial = true;
 
 
@@ -15,8 +15,8 @@ function App() {
   const showCart = useSelector(state => state.ui.showCart);
   const products = useSelector(state => state.product.products);
   const cart = useSelector((state) => state.cart);
+  const cartChanged = useSelector(state => state.cart.changed);
   const dispatch = useDispatch();
-  console.log('cart', cart);
 
 
   useEffect(() => {
@@ -24,9 +24,17 @@ function App() {
       isInitial = false;
       return;
     }
-    dispatch(sendCartData(cart))
 
-  }, [cart, dispatch])
+    if (cartChanged) {
+      dispatch(sendCartData(cart))
+    }
+
+
+  }, [cart, dispatch]);
+
+  useEffect(() => {
+    dispatch(getCartData())
+  }, [dispatch])
 
   return (
     <Fragment>
