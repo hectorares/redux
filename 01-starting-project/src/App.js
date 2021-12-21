@@ -8,7 +8,7 @@ import { productActions } from './store/product-slice';
 import Notification from './components/UI/Notification';
 import { uiActions } from './store/ui-slice';
 import { sendCartData, getCartData } from './store/cart-actions';
-import { fecthProductsData } from './store/product-slice';
+import { fecthProductsData } from './store/product-actions';
 let isInitial = true;
 
 
